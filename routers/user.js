@@ -20,7 +20,9 @@ router.post('/users', async  (req, res) => {
     const user = new User(req.body)
     try {
         await user.save()
+        console.log(user)
         sendEmail(user.email, user.firstName)
+        console.log(user.email, user.firstName)
         res.json({ result: "success", message: "Register successfully" }) 
     } catch (e) {
        res.status(400).send(e)
